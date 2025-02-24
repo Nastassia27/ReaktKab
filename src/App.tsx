@@ -17,7 +17,7 @@ function App() {
             <PageTitle title={'Hello my World'}/>
             {/*<Rating value={rating} onClick={setRating}/>
             <UncontrolledRating />*/}
-           {/* <Accordion2 title={'List of fruits'} onClick={setAccordionCollapse} collapsed={accordionCollapse}/>*/}
+            <Accordion2 title={'List of fruits'} onClick={setAccordionCollapse} collapsed={accordionCollapse}/>
         {/*    <Accordion2 title={'2222'} collapsed={false}/>*/}
            {/* <UncontrolledAccordion title={'Uncontrolled'} />*/}
             <UncontrolledOnOff/>

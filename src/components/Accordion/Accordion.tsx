@@ -45,8 +45,7 @@ function AccordionBody() {
 }
 
 
-/*
-export function Accordion(props: AccordionPropsType) {
+/*export function Accordion(props: AccordionPropsType) {
     if (props.collapsed) {
         return (
             <>
