@@ -11,6 +11,7 @@ type StarPropsType = {
 type classType = {
     fontWeight: string
 }
+//want to make changes to push it to repo
 
 
 function Star(props: StarPropsType) {
