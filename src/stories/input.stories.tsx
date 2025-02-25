@@ -1,7 +1,8 @@
 import {Meta, StoryObj} from '@storybook/react';
 
 
-import React, {useRef, useState} from "react";
+import React, {ChangeEvent, useRef, useState} from "react";
+import {action} from "@storybook/addon-actions";
 
 
 
@@ -46,4 +47,39 @@ export const GetValueUncontrolledValue=()=>{
         </div>
     )
 }
+
+export const ControlledInput=()=>{
+    const[parentValue, setParentValue]=useState('')
+    const onCHangeHandler = (e: ChangeEvent<HTMLInputElement>)=>{
+        setParentValue(e.currentTarget.value)}
+    return(
+        <div>  <input value={parentValue} onChange={onCHangeHandler} />
+        </div>
+    )
+}
+export const ControlledCheckbox=()=>{
+    const[parentValue, setParentValue]=useState(true)
+    const onCHangeHandler = (e: ChangeEvent<HTMLInputElement>)=>{
+        setParentValue(e.currentTarget.checked)}
+    return(
+        <div>  <input type={'checkbox'} checked={parentValue} onChange={onCHangeHandler} />
+        </div>
+    )
+}
+export const ControlledSelect=()=>{
+    const[parentValue, setParentValue]=useState<string| undefined>(undefined)
+    const onCHangeHandler = (e: ChangeEvent<HTMLSelectElement>)=>{
+        setParentValue(e.currentTarget.value)
+    }
+
+    return(
+        <select value={parentValue} onChange={onCHangeHandler}>
+            <option >none</option>
+            <option value={'1'}>Minsk</option>
+            <option value={'2'}>Moskow</option>
+            <option value={'3'}>Tbilisi</option>
+        </select>
+    )
+}
+
 
