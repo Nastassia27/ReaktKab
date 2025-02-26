@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 
 import Rating, {RatingValueType} from "./components/Rating/Rating";
-import {Accordion2} from "./components/Accordion/Accordion";
+import {Accordion} from "./components/Accordion/Accordion";
 import {UncontrolledOnOff} from "./components/OnOff/UncontrolledOnOff";
 import {UncontrolledRating} from "./components/Rating/UncontrolledRating";
 import {UncontrolledAccordion} from "./components/Accordion/UncontrolledAccordion";
@@ -17,7 +17,7 @@ function App() {
             <PageTitle title={'Hello my World'}/>
             {/*<Rating value={rating} onClick={setRating}/>
             <UncontrolledRating />*/}
-            <Accordion2 title={'List of fruits'} onClick={setAccordionCollapse} collapsed={accordionCollapse}/>
+            <Accordion title={'List of fruits'} onClick={setAccordionCollapse} collapsed={accordionCollapse}/>
         {/*    <Accordion2 title={'2222'} collapsed={false}/>*/}
            {/* <UncontrolledAccordion title={'Uncontrolled'} />*/}
             <UncontrolledOnOff/>

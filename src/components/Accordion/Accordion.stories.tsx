@@ -1,40 +1,50 @@
 import {Meta, StoryObj} from '@storybook/react';
 
-import  {Accordion2}  from './Accordion';
+import {Accordion} from './Accordion';
 import React from "react";
 import {Button} from "../OnOff/Button";
 import {action} from '@storybook/addon-actions';
 
-const meta: Meta<typeof Accordion2> = {
-    component: Accordion2,
+const meta: Meta<typeof Accordion> = {
+    component: Accordion,
 };
 
 export default meta;
-type Story = StoryObj<typeof Accordion2>;
+type Story = StoryObj<typeof Accordion>;
 
-export const FirstStory: Story={
+export const FirstStory: Story = {
     args: {
         title: 'hello',
         collapsed: true,
-        onClick:()=> {}
+        onClick: () => {
+        }
     },
 }
-const onChangeCallback=action("onCHange");
-export const CollapsedAccordion=()=>{
-    return(
-        <div> <Accordion2 title={'CollapsedAccordion'} onClick={onChangeCallback} collapsed={true}/></div>
+const onChangeCallback = action("onCHange");
+const onCLickCallback = action("some item was clicked");
+export const CollapsedAccordion = () => {
+    return (
+        <div><Accordion onClick={onCLickCallback} items={[]} title={'CollapsedAccordion'}
+                        onClickTitle={onChangeCallback} collapsed={true}/></div>
     )
 }
-export const OpenedAccordion = ()=>{
-    return(
-        <div> <Accordion2 title={'OpenedAccordion'} onClick={()=>{}} collapsed={false}/></div>
+export const OpenedAccordion = () => {
+    return (
+        <div><Accordion onClick={onCLickCallback}
+                        items={[{title: 'dimych', value: 1}, {title: 'nastya', value: 2}, {title: 'katya', value: 3}]}
+                        title={'OpenedAccordion'} onClickTitle={() => {
+        }} collapsed={false}/></div>
     )
 }
 
-export const Accordion = ()=>{
+export const AccordionNew = () => {
     const [collapsed, setCollapsed] = React.useState(false)
-    return(
-        <div> <Accordion2 title={'Accordion'} onClick={()=>{setCollapsed(!collapsed)}} collapsed={collapsed}/></div>
+    return (
+        <div><Accordion onClick={(id) => alert('user' + id + 'should be happy')}
+                        items={[{title: 'dimych', value: 1}, {title: 'nastya', value: 2}, {title: 'katya', value: 3}]}
+                        title={'Accordion'} onClickTitle={() => {
+            setCollapsed(!collapsed)
+        }} collapsed={collapsed}/></div>
     )
 }
 
