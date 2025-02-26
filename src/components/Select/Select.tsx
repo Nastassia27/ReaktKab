@@ -1,4 +1,5 @@
 import React from "react";
+import styles from './select.module.css'
 
 type SelectPropsType = {
     value: any
@@ -15,21 +16,23 @@ type ItemType = {
 
 const Select = (props: SelectPropsType) => {
 
-  /*  const showValues = () => {
-        if (props.isClicked) {
-            props.items.map((e) => <div key={e.value} onClick={()=>props.onChange(e.value)}>{e.title}</div>)
-        }
-    }*/
+    /*  const showValues = () => {
+          if (props.isClicked) {
+              props.items.map((e) => <div key={e.value} onClick={()=>props.onChange(e.value)}>{e.title}</div>)
+          }
+      }*/
     return (
-        <div>
-            <div onClick={props.onClick}>
+        <div className={styles.selectWrapper}>
+            <div className={styles.selectedValue}
+                 onClick={props.onClick}>
                 {props.items.find((e) => e.value === props.value)?.title || "Select an option"}
             </div>
-           {/* <>{showValues()}</>*/}
+            {/* <>{showValues()}</>*/}
             {props.isClicked && (
-                <div>
+                <div className={styles.dropdown}>
                     {props.items.map((e) => (
                         <div
+                            className={styles.option}
                             key={e.value}
                             onClick={() => props.onChange(e.value)}
                         >
