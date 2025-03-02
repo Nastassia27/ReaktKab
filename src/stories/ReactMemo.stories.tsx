@@ -3,6 +3,7 @@ import {memo, useState} from "react";
 export default {
     title: 'ReactMemoDemo',
 }
+
 const NewMessagesCounter = (props: any) => {
     return <div>{props.count}</div>
 }
@@ -11,7 +12,8 @@ const UsersSecret = (props: { users: Array<string> }) => {
     console.log('Users')
     return <div>{props.users.map((u, i) => <div>{u}</div>)}</div>
 }
-const Users = memo(UsersSecret)
+const Users = memo(UsersSecret) // поверяет поменялись ли входные пропсы
+// и тогда только перерисовывает компоненту
 
 export const Example = () => {
 
