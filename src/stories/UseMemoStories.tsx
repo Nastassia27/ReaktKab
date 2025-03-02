@@ -1,4 +1,4 @@
-import {memo, useMemo, useState} from "react";
+import {memo, useCallback, useMemo, useState} from "react";
 
 export default {
     title: 'UseMemoStories',
@@ -66,7 +66,7 @@ export const Example2 = () => {
         return users.filter((u) => u.toLowerCase().indexOf('A') > -1)
     }, [users])//[] - оодин раз бы посчиталось. запомнила и больше бы не перерисовывалось
 
-    const addNewUser = ()=>{
+    const addNewUser = () => {
         setUsers([...users, 'Dima'])
     }
     return (
@@ -75,6 +75,46 @@ export const Example2 = () => {
             <button onClick={addNewUser}>Add User</button>
             {counter}
             <Users users={newArray}/>
+        </>
+    )
+
+}
+
+
+const BooksSecret = (props: { /*books: Array<string>*/ addBook: () => void }) => {
+    console.log('Users')
+    return <div>
+        <button onClick={() => props.addBook()}>Add book</button>
+        {/*  {props.books.map((b, i) => <div key={i}>{b}</div>)}*/}</div>
+}
+const Book = memo(BooksSecret)
+
+export const LikeUseCallback = () => {
+
+    const [counter, setCounter] = useState<number>(0)
+    const [books, setBooks] = useState<Array<string>>(['admin', 'admin2', 'admin3'])
+    const newArray = useMemo(() => {
+        return books.filter((u) => u.toLowerCase().indexOf('A') > -1)
+    }, [books])//[] - оодин раз бы посчиталось. запомнила и больше бы не перерисовывалось
+
+    /* const addNewBooks = ()=>{
+         setBooks([...books, 'Angular'])
+     }*/
+    const memorizedAddBooks = useMemo(() => {
+        return () => {
+            setBooks([...books, 'Angular'])
+        }
+    }, [books])
+    const usedCallback = useCallback(() => {
+
+        setBooks([...books, 'Angular'])
+    }, [books])
+
+    return (
+        <>
+            <button onClick={() => setCounter(counter + 1)}>+</button>
+            {counter}
+            <Book addBook={usedCallback}/>
         </>
     )
 
